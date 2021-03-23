@@ -35,11 +35,15 @@ namespace aufgabe_02 {
             if (!is_digit(text[i])) {
                 throw std::invalid_argument("Char at pos " + std::to_string(i) + " is not a digit");
             }
-            int numberValue = text[i] - 48;
+            int numberValue = text[i] - 48; // 48 -> ASCII-Null (0)
             solution += numberValue * pow(10, text.length() - i - 1);
         }
 
         return solution * signMultiplicator;
+    }
+
+    void parse_int_pointer(const std::string &text, int *solution) {
+        *solution = parse_int(text);
     }
 }
 
@@ -61,6 +65,8 @@ void parse_int_test() {
     assert(aufgabe_02::parse_int("-1234") == -1234);
     assert(aufgabe_02::parse_int("+1234") == 1234);
     assert(aufgabe_02::parse_int("+9001") == 9001);
+    assert(aufgabe_02::parse_int("+0") == 0);
+    assert(aufgabe_02::parse_int("-0") == 0);
     try {
         assert(aufgabe_02::parse_int("9001") == 9001); //No sign
         assert(false);
@@ -71,14 +77,19 @@ void parse_int_test() {
     } catch (...) {}
 }
 
+void parse_int_pointer_test() {
+    int solution;
+    aufgabe_02::parse_int_pointer("+1232", &solution);
+    assert(solution == 1232);
+}
+
 int main() {
     printf("Beginning...\n");
 
     is_digit_test();
     is_sign_test();
     parse_int_test();
-
-    printf("%d\n", aufgabe_02::parse_int("+1234"));
+    parse_int_pointer_test();
 
     printf("Tests successful...\n");
 
