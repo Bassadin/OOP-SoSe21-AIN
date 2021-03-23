@@ -63,6 +63,7 @@ void is_sign_test() {
 void parse_int_test() {
     assert(aufgabe_02::parse_int("-1234") == -1234);
     assert(aufgabe_02::parse_int("+1234") == 1234);
+    assert(aufgabe_02::parse_int("1234") == 1234);
     assert(aufgabe_02::parse_int("+9001") == 9001);
     assert(aufgabe_02::parse_int("+0") == 0);
     assert(aufgabe_02::parse_int("-0") == 0);
