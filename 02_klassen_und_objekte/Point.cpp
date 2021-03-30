@@ -3,35 +3,31 @@
 //
 
 #include <cmath>
+#include "Point.h"
 
-class Point {
-private:
-    int x, y;
+int Point::squared_delta(int v, int w) {
+    return pow(v - w, 2);
+}
 
-    int squared_delta(int v, int w) {
-        return pow(v - w, 2);
-    }
 
-public:
-    int getX() {
-        return x;
-    }
+int Point::getX() {
+    return x;
+}
 
-    void setX(int x) {
-        this->x = x;
-    }
+void Point::setX(int x) {
+    this->x = x;
+}
 
-    int getY() {
-        return y;
-    }
+int Point::getY() {
+    return y;
+}
 
-    void setY(int y) {
-        this->y = y;
-    }
+void Point::setY(int y) {
+    this->y = y;
+}
 
-    double distance(Point &other) {
-        double squared_delta_x = squared_delta(other.getX(), getX());
-        double squared_delta_y = squared_delta(other.getY(), getY());
-        return sqrt(squared_delta_x + squared_delta_y);
-    }
-};
+double Point::distance(Point &other) {
+    double squared_delta_x = squared_delta(other.getX(), getX());
+    double squared_delta_y = squared_delta(other.getY(), getY());
+    return sqrt(squared_delta_x + squared_delta_y);
+}

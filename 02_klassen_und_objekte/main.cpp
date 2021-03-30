@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <cmath>
-#include "Point.cpp"
+#include "Point.h"
 
 int main() {
     std::cout << "Starting..." << std::endl;
