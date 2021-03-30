@@ -5,6 +5,8 @@
 #ifndef OOP_DATE_H
 #define OOP_DATE_H
 
+#include <iostream>
+
 
 class Date {
 private:

@@ -2,7 +2,6 @@
 // Created by basti on 30.03.2021.
 //
 
-#include <stdexcept>
 #include "Date.h"
 
 void Date::init(unsigned int year, unsigned int month, unsigned int day) {
