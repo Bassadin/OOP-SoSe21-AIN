@@ -41,7 +41,7 @@ class Segment {
 private:
     Point p1 = Point(0, 0), p2 = Point(0, 0);
 public:
-    Segment(int x1, int y1, int x2, int y2) : p1(Point(x1, y1)), p2(Point(x2, y2)) {
+    Segment(Point p1, Point p2) : p1(p1), p2(p2) {
 
     }
 
@@ -57,7 +57,7 @@ public:
 int main() {
     std::cout << "starting..." << std::endl;
 
-    auto test_segment = Segment(1, 2, 3, 4);
+    auto test_segment = Segment(Point(23, 42), Point(12, 34));
     std::cout << test_segment.getP1().getX() << std::endl;
 
 
