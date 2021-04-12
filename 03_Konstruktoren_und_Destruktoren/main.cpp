@@ -3,31 +3,26 @@
 
 class Point {
 private:
-    int x, y;
+    const int *coordinates;
 
     int squared_delta(int v, int w) {
         return pow(v - w, 2);
     }
 
+    int* make_pair(int x, int y) {
+        return new int[2]{x, y};
+    }
 public:
-    Point(int x, int y) : x(x), y(y) {
+    Point(int x, int y) : coordinates(make_pair(x, y)) {
         std::cout << "in ctor..." << std::endl;
     }
 
     int getX() const {
-        return x;
-    }
-
-    void setX(int x) {
-        this->x = x;
+        return coordinates[0];
     }
 
     int getY() const {
-        return y;
-    }
-
-    void setY(int y) {
-        this->y = y;
+        return coordinates[1];
     }
 
     double distance(Point &other) {
@@ -41,7 +36,7 @@ class Segment {
 private:
     Point p1 = Point(0, 0), p2 = Point(0, 0);
 public:
-    Segment(Point p1, Point p2) : p1(p1), p2(p2) {
+    Segment(const Point &p1, const Point &p2) : p1(p1), p2(p2) {
 
     }
 
