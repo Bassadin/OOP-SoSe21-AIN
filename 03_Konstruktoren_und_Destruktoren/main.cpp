@@ -12,6 +12,11 @@ private:
     }
 
 public:
+    Point(int x, int y) {
+        setX(x);
+        setY(y);
+    }
+
     int getX()
     {
         return x;
@@ -43,4 +48,10 @@ public:
 int main()
 {
     std::cout << "starting..." << std::endl;
+
+    Point point(47, 11);
+    std::cout << point.getX() << " " << point.getY() << std::endl;
+
+
+    std::cout << "terminating..." << std::endl;
 }
