@@ -9,13 +9,16 @@ private:
         return pow(v - w, 2);
     }
 
-    int* make_pair(int x, int y) {
+    int *make_pair(int x, int y) {
         return new int[2]{x, y};
     }
+
 public:
     Point(int x, int y) : coordinates(make_pair(x, y)) {
         std::cout << "in ctor..." << std::endl;
     }
+
+    Point() : Point(0, 0) {}
 
     int getX() const {
         return coordinates[0];
