@@ -4,7 +4,7 @@
 
 #include "Person.h"
 
-void Person::init(const std::string& _first_name, const std::string& _last_name, const Date& _birthday) {
+void Person::init(const std::string& first_name, const std::string& last_name, const Date& birthday) {
     if (_first_name == "") {
         throw std::invalid_argument("first name is empty");
     }
@@ -12,9 +12,9 @@ void Person::init(const std::string& _first_name, const std::string& _last_name,
         throw std::invalid_argument("last name is empty");
     }
 
-    this->first_name = _first_name;
-    this->last_name = _last_name;
-    this->birthday = _birthday;
+    this->first_name = first_name;
+    this->last_name = last_name;
+    this->birthday = birthday;
 }
 
 const std::string &Person::get_first_name() const {
