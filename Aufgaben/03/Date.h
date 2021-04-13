@@ -11,8 +11,10 @@ namespace hfu {
     class Date {
     private:
         int year, month, day;
+        unsigned int checkDay(unsigned int day, unsigned int month, unsigned int year);
+        unsigned int checkMonth(unsigned int month);
     public:
-        void init(unsigned int year, unsigned int month, unsigned int day);
+        Date(unsigned int year, unsigned int month, unsigned int day);
 
         int get_year() const;
 

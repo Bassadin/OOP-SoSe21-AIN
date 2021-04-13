@@ -3,19 +3,26 @@
 //
 
 #include "Person.h"
+
 namespace hfu {
-    void Person::init(const std::string &first_name, const std::string &last_name, const Date &birthday) {
-        if (first_name.empty()) {
+    std::string Person::check_firstname(std::string firstname) {
+        if (firstname.empty()) {
             throw std::invalid_argument("first name is empty");
         }
-        if (last_name.empty()) {
+        return firstname;
+    }
+
+    std::string Person::check_lastname(std::string lastname) {
+        if (lastname.empty()) {
             throw std::invalid_argument("last name is empty");
         }
-
-        this->first_name = first_name;
-        this->last_name = last_name;
-        this->birthday = birthday;
+        return lastname;
     }
+
+    Person::Person(const std::string &first_name, const std::string &last_name, const Date &birthday) :
+            first_name(check_firstname(first_name)),
+            last_name(check_lastname(last_name)),
+            birthday(birthday) {}
 
     const std::string &Person::get_first_name() const {
         return first_name;

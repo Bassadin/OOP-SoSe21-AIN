@@ -13,8 +13,11 @@ namespace hfu {
     private:
         std::string first_name, last_name;
         Date birthday;
+
+        std::string check_lastname(std::string lastname);
+        std::string check_firstname(std::string firstname);
     public:
-        void init(const std::string &_first_name, const std::string &_last_name, const Date &_birthday);
+        Person(const std::string &_first_name, const std::string &_last_name, const Date &_birthday);
 
         const std::string &get_last_name() const;
 
