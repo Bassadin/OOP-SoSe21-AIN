@@ -11,4 +11,4 @@ add_executable(03-konstruktoren_und_destruktoren 03_Konstruktoren_und_Destruktor
 add_executable(aufgabe-01 Aufgaben/01/test.cpp)
 add_executable(aufgabe-02 Aufgaben/02/main.cpp)
 add_executable(aufgabe-03 Aufgaben/03/main.cpp Aufgaben/03/Date.cpp Aufgaben/03/Person.cpp)
-add_executable(aufgabe-04 Aufgaben/04/main.cpp)
+add_executable(aufgabe-04 Aufgaben/04/main.cpp Aufgaben/04/Friend.cpp)
