@@ -3,13 +3,10 @@
 //
 #include <cassert>
 #include <iostream>
+#include "Friend.h"
 
-class Friends {
-private:
-    const std::string *names;
-    int size;
-
-    int validate_array_size(int newSize, std::string newNames[]) {
+namespace hfu {
+    int Friends::validate_array_size(int newSize, std::string newNames[]) {
         if (newSize < 0)
             throw std::invalid_argument("newSize is smaller then 0");
         if (newNames) {
@@ -21,20 +18,33 @@ private:
         return newSize;
     }
 
-public:
-    Friends(std::string *names, int size) : names(names), size(validate_array_size(size, names)) {}
+    std::string *Friends::copy_array(std::string *string_array_to_copy, int copy_length) {
+        if (string_array_to_copy == nullptr) {
+            return string_array_to_copy;
+        }
 
-    Friends() : Friends(nullptr, 0) {}
+        std::string *copiedArray = new std::string[copy_length];
+        for (int i = 0; i < copy_length; i++) {
+            copiedArray[i] = string_array_to_copy[i];
+        }
+        return copiedArray;
+    }
 
-    const std::string &name(int v) {
+
+    Friends::Friends(std::string *names, int size) : names(copy_array(names, size)),
+                                                     size(validate_array_size(size, names)) {}
+
+    Friends::Friends() : Friends::Friends(nullptr, 0) {}
+
+    const std::string &Friends::name(int v) {
         return names[v];
     }
 
-    const std::string *getNames() const {
+    const std::string *Friends::getNames() const {
         return names;
     }
 
-    const int &getSize() const {
+    const int &Friends::getSize() const {
         return size;
     }
-};
+}
