@@ -5,7 +5,7 @@
 #include <iostream>
 #include "main.h"
 
-namespace hfu {
+namespace kopierkonstruktoren_03 {
 
     class Point {
     private:
@@ -18,7 +18,9 @@ namespace hfu {
 
     public:
         Point(int x, int y) : coordinates(make_pair(x, y)) {}
-        Point(const Point &other): Point(other.getX(), other.getY()){}
+        Point(const Point &other): Point(other.getX(), other.getY()){
+            std::cout << "in copy ctr" << std::endl;
+        }
         int getX() const {
             return coordinates[0];
         }
@@ -35,14 +37,40 @@ namespace hfu {
             coordinates[1] = y;
         }
     };
+
+    class Segment {
+    private:
+        Point p1, p2;
+    public:
+        Segment(const Point &p1, const Point &p2): p1(p1), p2(p2){}
+
+        const Point &getP1() const {
+            return p1;
+        }
+    };
+}
+
+void dump (kopierkonstruktoren_03::Point p) {
+    std::cout << p.getX() << " " << p.getY() << std::endl;
+}
+
+kopierkonstruktoren_03::Point sum(kopierkonstruktoren_03::Point p, kopierkonstruktoren_03::Point q) {
+    kopierkonstruktoren_03::Point result = kopierkonstruktoren_03::Point(p.getX()+q.getX(), p.getY()+q.getY());
+    return result;
 }
 
 int main() {
     std::cout << "starting..." << std::endl;
-    hfu::Point p = hfu::Point(47, 11);
-    hfu::Point p_copy = p;
-    p_copy.setX(23);
-    std::cout << p.getX() << " " << p_copy.getX() << std::endl;
+    kopierkonstruktoren_03::Point p(47,11);
+    kopierkonstruktoren_03::Point q(23,42);
+    p=q; //Nur Zuweisung, deshalb kein Kopierkonstruktor!
+
+    std::cout << "dump:" << std::endl;
+    dump(p); // ruft Kopierkonstruktor auf, da mit pass-by-value gearbeitet wird
+
+    std::cout << "sum:" << std::endl;
+    std::cout << sum(p, q).getX() << std::endl;
+
     std::cout << "terminating..." << std::endl;
     return 0;
 }
