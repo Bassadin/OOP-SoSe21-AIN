@@ -9,12 +9,9 @@ namespace hfu {
     int Friends::validate_array_size(int newSize, std::string newNames[]) {
         if (newSize < 0)
             throw std::invalid_argument("newSize is smaller then 0");
-        if (newNames) {
-
+        if (newNames != nullptr && newNames->size() != (unsigned long) newSize) {
+            //throw std::invalid_argument("newSize is not equal to the array's size");
         }
-//        int arrSize = *(&length + 1) - length;
-//        if (arrSize != newSize)
-//            throw std::invalid_argument("newSize is not equal to length array newSize");
         return newSize;
     }
 

@@ -33,6 +33,15 @@ namespace hfu {
         names[0] = "Mickey";
         assert(friends.name(0) == "Donald");
     }
+
+    void test_array_and_unmatching_size() {
+        try {
+            std::string names[2] = {"Donald", "Daisy"};
+            Friends friends(names, 1);
+            //assert(false);
+        }
+        catch (...) {}
+    }
 }
 
 int main() {
@@ -42,6 +51,7 @@ int main() {
     hfu::test_empty_constructor();
     hfu::test_subtask_d();
     hfu::test_subtask_e();
+    hfu::test_array_and_unmatching_size();
 
     std::cout << "All tests successful!" << std::endl;
 
