@@ -34,6 +34,8 @@ namespace hfu {
     Friends::Friends() : Friends::Friends(nullptr, 0) {}
 
     const std::string &Friends::name(int v) {
+        if (v < 0)
+            throw std::invalid_argument("v is smaller then 0");
         return names[v];
     }
 

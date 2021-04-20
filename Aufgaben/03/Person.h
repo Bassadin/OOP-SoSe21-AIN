@@ -14,8 +14,8 @@ namespace hfu {
         std::string first_name, last_name;
         Date birthday;
 
-        std::string check_lastname(std::string lastname);
-        std::string check_firstname(std::string firstname);
+        static std::string check_lastname(std::string lastname);
+        static std::string check_firstname(std::string firstname);
     public:
         Person(const std::string &_first_name, const std::string &_last_name, const Date &_birthday);
 

@@ -21,6 +21,8 @@ namespace kopierkonstruktoren_03 {
         Point(const Point &other): Point(other.getX(), other.getY()){
             std::cout << "in copy ctr" << std::endl;
         }
+        // Syntax for deleting copy constructor
+        //Point(const Point &other)=delete;
         int getX() const {
             return coordinates[0];
         }

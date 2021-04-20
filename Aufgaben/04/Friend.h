@@ -11,9 +11,9 @@ namespace hfu {
         const std::string *names;
         int size;
 
-        int validate_array_size(int newSize, std::string newNames[]);
+        static int validate_array_size(int newSize, std::string newNames[]);
 
-        std::string *copy_array(std::string *string_array_to_copy, int copy_length);
+        static std::string *copy_array(std::string *string_array_to_copy, int copy_length);
 
     public:
         Friends(std::string *names, int size);

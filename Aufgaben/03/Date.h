@@ -11,8 +11,8 @@ namespace hfu {
     class Date {
     private:
         int year, month, day;
-        unsigned int checkDay(unsigned int day, unsigned int month, unsigned int year);
-        unsigned int checkMonth(unsigned int month);
+        static unsigned int checkDay(unsigned int day, unsigned int month, unsigned int year);
+        static unsigned int checkMonth(unsigned int month);
     public:
         Date(unsigned int year, unsigned int month, unsigned int day);
 
