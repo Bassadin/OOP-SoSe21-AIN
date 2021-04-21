@@ -3,7 +3,7 @@
 //
 #include <cassert>
 #include <iostream>
-#include "Friend.h"
+#include "Friends.h"
 
 namespace hfu {
     int Friends::validate_array_size(int newSize, std::string newNames[]) {

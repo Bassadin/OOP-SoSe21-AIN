@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "Friend.h"
+#include "Friends.h"
 
 namespace hfu {
     void test_normal_constructor() {

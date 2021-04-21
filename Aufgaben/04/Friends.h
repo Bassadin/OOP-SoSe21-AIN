@@ -2,8 +2,8 @@
 // Created by basti on 13.04.2021.
 //
 
-#ifndef OOP_FRIEND_H
-#define OOP_FRIEND_H
+#ifndef OOP_FRIENDS_H
+#define OOP_FRIENDS_H
 
 namespace hfu {
     class Friends {
@@ -28,4 +28,4 @@ namespace hfu {
     };
 }
 
-#endif //OOP_FRIEND_H
+#endif //OOP_FRIENDS_H
