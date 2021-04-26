@@ -5,7 +5,7 @@
 #include <iostream>
 #include "main.h"
 
-namespace kopierkonstruktoren_03 {
+namespace kopierkonstruktoren_04 {
 
     class Point {
     private:
@@ -52,19 +52,19 @@ namespace kopierkonstruktoren_03 {
     };
 }
 
-void dump (kopierkonstruktoren_03::Point p) {
+void dump (kopierkonstruktoren_04::Point p) {
     std::cout << p.getX() << " " << p.getY() << std::endl;
 }
 
-kopierkonstruktoren_03::Point sum(kopierkonstruktoren_03::Point p, kopierkonstruktoren_03::Point q) {
-    kopierkonstruktoren_03::Point result = kopierkonstruktoren_03::Point(p.getX()+q.getX(), p.getY()+q.getY());
+kopierkonstruktoren_04::Point sum(kopierkonstruktoren_04::Point p, kopierkonstruktoren_04::Point q) {
+    kopierkonstruktoren_04::Point result = kopierkonstruktoren_04::Point(p.getX() + q.getX(), p.getY() + q.getY());
     return result;
 }
 
 int main() {
     std::cout << "starting..." << std::endl;
-    kopierkonstruktoren_03::Point p(47,11);
-    kopierkonstruktoren_03::Point q(23,42);
+    kopierkonstruktoren_04::Point p(47, 11);
+    kopierkonstruktoren_04::Point q(23, 42);
     p=q; //Nur Zuweisung, deshalb kein Kopierkonstruktor!
 
     std::cout << "dump:" << std::endl;
