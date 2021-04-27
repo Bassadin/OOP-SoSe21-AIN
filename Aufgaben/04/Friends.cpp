@@ -36,6 +36,11 @@ namespace hfu {
 
     Friends::Friends() : Friends::Friends(nullptr, 0) {}
 
+    Friends::~Friends(){
+        delete[] names;
+        std::cout << "Friends dtr" << std::endl;
+    }
+
     const std::string &Friends::name(int v) const {
         if (v < 0)
             throw std::invalid_argument("v is smaller then 0");
@@ -58,8 +63,9 @@ namespace hfu {
             newNames[i] = getNames()[i];
         }
         newNames[getSize()] = nameStringToAdd;
-        this->names = newNames;
-        this->size++;
+        delete[] names;
+        names = newNames;
+        size++;
     }
 
     bool Friends::operator==(const Friends &other) const {

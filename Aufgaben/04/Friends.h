@@ -20,9 +20,7 @@ namespace hfu {
 
         Friends();
 
-        ~Friends(){
-            std::cout << "Friends dtr" << std::endl;
-        }
+        ~Friends();
 
         Friends(const Friends &other);
 
