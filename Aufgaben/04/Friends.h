@@ -11,20 +11,31 @@ namespace hfu {
         const std::string *names;
         int size;
 
-        static int validate_array_size(int newSize, std::string newNames[]);
+        static int validate_array_size(int newSize, const std::string newNames[]);
 
-        static std::string *copy_array(std::string *string_array_to_copy, int copy_length);
-
+        static const std::string *copy_array(const std::string *string_array_to_copy, int copy_length);
     public:
-        Friends(std::string *names, int size);
+
+        Friends(const std::string *names, int size);
 
         Friends();
 
-        const std::string &name(int v);
+        ~Friends(){
+            std::cout << "Friends dtr" << std::endl;
+        }
+
+        Friends(const Friends &other);
+
+        const std::string &name(int v) const;
 
         const std::string *getNames() const;
 
         const int &getSize() const;
+
+        void add(const char *nameStringToAdd);
+
+        bool operator==(const Friends &other) const;
+        bool operator!=(const Friends &other) const;
     };
 }
 

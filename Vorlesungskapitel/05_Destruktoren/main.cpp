@@ -36,6 +36,10 @@ namespace Destruktoren_05 {
             return *result;
         }
 
+        Point operator+(const Point &other) const {
+            return Point(x+other.x, y+other.y);
+        }
+
         int getX() const {
             return x;
         }
@@ -55,7 +59,7 @@ namespace Destruktoren_05 {
 int main() {
     Destruktoren_05::Point p1(4, 7);
     Destruktoren_05::Point p2(1, 1);
-    Destruktoren_05::Point p3 = p1.add(p2);
+    Destruktoren_05::Point p3 = p1+p2; //Same as p3 = p1.operator+(p2);
     std::cout << p3.getX() << std::endl;
     std::cout << "terminating..." << std::endl;
 
