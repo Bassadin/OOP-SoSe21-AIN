@@ -55,12 +55,14 @@ namespace hfu_task5 {
     };
 
     void test_task5_number2() {
+        std::cout << "Test task 2 starting" << std::endl;
         std::string names[2] = {"Donald", "Daisy"};
         hfu::Friends friends1(names, 2);
-        assert(friends1.name(0) == "Donald");
         names[0] = "Dagobert";
         hfu::Friends friends2 = friends1;
+        friends1.setNames(names);
         assert(friends2.name(0) == "Donald");
+        std::cout << "Test task 2 ending" << std::endl;
     }
 
     void test_task5_number3_points() {

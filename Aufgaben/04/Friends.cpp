@@ -6,7 +6,7 @@
 #include "Friends.h"
 
 namespace hfu {
-    int Friends::validate_array_size(int newSize, const std::string newNames[]) {
+    int Friends::validate_array_size(int newSize, std::string newNames[]) {
         if (newSize < 0)
             throw std::invalid_argument("newSize is smaller then 0");
         if (newNames != nullptr && newNames->size() != (unsigned long) newSize) {
@@ -15,7 +15,7 @@ namespace hfu {
         return newSize;
     }
 
-    const std::string *Friends::copy_array(const std::string *string_array_to_copy, int copy_length) {
+    std::string *Friends::copy_array(std::string *string_array_to_copy, int copy_length) {
         if (string_array_to_copy == nullptr) {
             return string_array_to_copy;
         }
@@ -27,8 +27,7 @@ namespace hfu {
         return copiedArray;
     }
 
-
-    Friends::Friends(const std::string *names, int size) : names(copy_array(names, size)),
+    Friends::Friends(std::string *names, int size) : names(copy_array(names, size)),
                                                      size(validate_array_size(size, names)) {}
 
     Friends::Friends(const Friends &other) : Friends(other.getNames(), other.getSize()) {
@@ -43,7 +42,7 @@ namespace hfu {
         return names[v];
     }
 
-    const std::string *Friends::getNames() const {
+    std::string *Friends::getNames() const {
         return names;
     }
 
@@ -77,5 +76,9 @@ namespace hfu {
 
     bool Friends::operator!=(const Friends &other) const {
         return !(*this == other);
+    }
+
+    void Friends::setNames(std::string *names) {
+        Friends::names = names;
     }
 }
