@@ -57,13 +57,8 @@ namespace hfu {
 
 
     void Friends::add(const char *nameStringToAdd) {
-        std::string *newNames = new std::string[this->getSize()+1];
+        std::string *newNames = copy_array(getNames(), getSize());
 
-        newNames = copy_array(getNames(), getSize());
-
-        for (int i = 0; i < getSize(); ++i) {
-            newNames[i] = getNames()[i];
-        }
         newNames[getSize()] = nameStringToAdd;
         delete[] names;
         names = newNames;
