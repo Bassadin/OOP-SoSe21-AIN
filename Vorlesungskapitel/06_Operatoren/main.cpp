@@ -3,6 +3,7 @@
 //
 
 #include <cstdio>
+#include <iostream>
 #include "main.h"
 
 namespace operatoren_06 {
@@ -19,14 +20,6 @@ namespace operatoren_06 {
         Point(int x, int y) :
                 x(x), y(y) {
 
-        }
-
-        ~Point() {
-            puts("dtor call");
-        }
-
-        Point(const Point &other) : Point(other.x, other.y) {
-            puts("in copy ctr");
         }
 
         Point &add(const Point &other) const {
@@ -54,9 +47,22 @@ namespace operatoren_06 {
             return y;
         }
     };
+
+    Point operator*(int factor, const Point &point) {
+        return point * factor;
+    }
 }
 
 int main() {
+    std::cout << "starting..." << std::endl;
 
+    operatoren_06::Point p1(2, 3);
+    operatoren_06::Point p2(6, 10);
+
+    auto p3 = 23 * p2;
+
+    std::cout << p3.getX() << std::endl;
+
+    std::cout << "terminating..." << std::endl;
     return 0;
 }
