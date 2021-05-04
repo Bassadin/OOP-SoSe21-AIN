@@ -5,6 +5,8 @@
 #ifndef OOP_VECTOR3D_H
 #define OOP_VECTOR3D_H
 
+#include <ostream>
+
 namespace hfu {
     class Vector3D {
     private:
@@ -18,7 +20,11 @@ namespace hfu {
 
         float getZ() const;
 
+        friend std::ostream &operator<<(std::ostream &os, const Vector3D &d);
 
+        Vector3D operator+(const Vector3D& other);
+
+        Vector3D operator-(const Vector3D &other);
     };
 
 

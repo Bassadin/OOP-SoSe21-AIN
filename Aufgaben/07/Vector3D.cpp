@@ -19,6 +19,17 @@ namespace hfu {
         return z;
     }
 
+    std::ostream &operator<<(std::ostream &os, const Vector3D &d) {
+        os << "(x: " << d.getX() << " y: " << d.getY() << " z: " << d.getZ() << ")";
+        return os;
+    }
 
+    Vector3D Vector3D::operator+(const Vector3D &other) {
+        return Vector3D(getX() + other.getX(), getY() + other.getY(), getZ() + other.getZ());
+    }
+
+    Vector3D Vector3D::operator-(const Vector3D &other) {
+        return Vector3D(getX() - other.getX(), getY() - other.getY(), getZ() - other.getZ());
+    }
 }
 
