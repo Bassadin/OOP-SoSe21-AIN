@@ -14,6 +14,7 @@ namespace hfu {
         static int validate_array_size(int newSize, std::string newNames[]);
 
         static std::string *copy_array(std::string *string_array_to_copy, int copy_length);
+
     public:
 
         Friends(std::string *names, int size);
@@ -33,9 +34,12 @@ namespace hfu {
         void add(const char *nameStringToAdd);
 
         bool operator==(const Friends &other) const;
+
         bool operator!=(const Friends &other) const;
 
         void setNames(std::string *names);
+
+        static void copyArrayToArray(std::string *array_target, std::string *array_source, int copy_from, int copy_to);
     };
 }
 

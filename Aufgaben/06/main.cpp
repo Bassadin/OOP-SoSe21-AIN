@@ -47,8 +47,8 @@ namespace task_06 {
         std::string names3[3] = {"Dagobert", "Daisy", "Daniel"};
         hfu::Friends friends3(names3, 2);
 
-        assert(friends1==friends2);
-        assert(friends1!=friends3);
+        assert(friends1 == friends2);
+        assert(friends1 != friends3);
 
         std::cout << "Task 03 Test End" << std::endl;
     }

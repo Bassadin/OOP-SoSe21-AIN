@@ -21,9 +21,9 @@ namespace hfu {
         }
 
         std::string *copiedArray = new std::string[copy_length];
-        for (int i = 0; i < copy_length; i++) {
-            copiedArray[i] = string_array_to_copy[i];
-        }
+
+        copyArrayToArray(copiedArray, string_array_to_copy, 0, copy_length - 1);
+
         return copiedArray;
     }
 
@@ -36,7 +36,7 @@ namespace hfu {
 
     Friends::Friends() : Friends::Friends(nullptr, 0) {}
 
-    Friends::~Friends(){
+    Friends::~Friends() {
         delete[] names;
         std::cout << "Friends dtr" << std::endl;
     }
@@ -57,12 +57,26 @@ namespace hfu {
 
 
     void Friends::add(const char *nameStringToAdd) {
-        std::string *newNames = copy_array(getNames(), getSize());
+        std::string *newNames = new std::string[this->getSize() + 1];
+
+        copyArrayToArray(newNames, getNames(), 0, getSize() - 1);
 
         newNames[getSize()] = nameStringToAdd;
         delete[] names;
+
         names = newNames;
         size++;
+    }
+
+    void
+    Friends::copyArrayToArray(std::string *array_target, std::string *array_source, int copy_from, int copy_to) {
+        if (copy_from > copy_to) {
+            throw std::invalid_argument("copy start size is larger than copy end size");
+        }
+
+        for (int i = copy_from; i <= copy_to; ++i) {
+            array_target[i] = array_source[i];
+        }
     }
 
     bool Friends::operator==(const Friends &other) const {
