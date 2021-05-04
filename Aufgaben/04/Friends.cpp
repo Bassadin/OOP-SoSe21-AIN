@@ -41,9 +41,7 @@ namespace hfu {
         std::cout << "Friends dtr" << std::endl;
     }
 
-    const std::string &Friends::name(int v) const {
-        if (v < 0)
-            throw std::invalid_argument("v is smaller then 0");
+    const std::string &Friends::name(unsigned int v) const {
         return names[v];
     }
 
@@ -128,8 +126,6 @@ namespace hfu {
     }
 
     std::string Friends::operator[](const unsigned int &index) {
-        if (index > (unsigned) getSize() - 1)
-            return nullptr;
         return name(index);
     }
 }

@@ -27,7 +27,7 @@ namespace hfu {
 
         Friends(const Friends &other);
 
-        const std::string &name(int v) const;
+        const std::string &name(unsigned int v) const;
 
         std::string *getNames() const;
 
