@@ -17,3 +17,4 @@ add_executable(aufgabe-03 Aufgaben/03/main.cpp Aufgaben/03/Date.cpp Aufgaben/03/
 add_executable(aufgabe-04 Aufgaben/04/main.cpp Aufgaben/04/Friends.cpp)
 add_executable(aufgabe-05 Aufgaben/05/main.cpp Aufgaben/04/Friends.cpp)
 add_executable(aufgabe-06 Aufgaben/06/main.cpp Aufgaben/04/Friends.cpp)
+add_executable(aufgabe-07 Aufgaben/07/main.cpp Aufgaben/04/Friends.cpp Aufgaben/07/Vector3D.cpp Aufgaben/07/Vector3D.h)
