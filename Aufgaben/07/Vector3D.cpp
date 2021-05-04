@@ -31,5 +31,27 @@ namespace hfu {
     Vector3D Vector3D::operator-(const Vector3D &other) {
         return Vector3D(getX() - other.getX(), getY() - other.getY(), getZ() - other.getZ());
     }
+
+    Vector3D Vector3D::operator*(const float &factor) {
+        return Vector3D(getX() * factor, getY() * factor, getZ() * factor);
+    }
+
+    float Vector3D::operator*(const Vector3D &other) {
+        return (other.getX() * getX()) + (other.getY() * getY()) + (other.getZ() * getZ());
+    }
+
+    Vector3D operator*(float factor, const Vector3D &other) {
+        return Vector3D(other.getX() * factor, other.getY() * factor, other.getZ() * factor);
+    }
+
+    bool Vector3D::operator==(const Vector3D &other) const {
+        return x == other.x &&
+               y == other.y &&
+               z == other.z;
+    }
+
+    bool Vector3D::operator!=(const Vector3D &rhs) const {
+        return !(rhs == *this);
+    }
 }
 

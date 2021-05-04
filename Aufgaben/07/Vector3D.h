@@ -25,9 +25,17 @@ namespace hfu {
         Vector3D operator+(const Vector3D& other);
 
         Vector3D operator-(const Vector3D &other);
+
+        Vector3D operator*(const float &factor);
+
+        float operator*(const Vector3D& other);
+
+        bool operator==(const Vector3D &other) const;
+
+        bool operator!=(const Vector3D &rhs) const;
     };
 
-
+    Vector3D operator*(float factor, const Vector3D &other);
 }
 
 #endif //OOP_VECTOR3D_H
