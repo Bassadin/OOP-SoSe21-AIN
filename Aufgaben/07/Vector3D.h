@@ -22,6 +22,8 @@ namespace hfu {
 
         friend std::ostream &operator<<(std::ostream &os, const Vector3D &d);
 
+        friend Vector3D operator*(float factor, const Vector3D &other);
+
         Vector3D operator+(const Vector3D& other);
 
         Vector3D operator-(const Vector3D &other);
@@ -32,10 +34,10 @@ namespace hfu {
 
         bool operator==(const Vector3D &other) const;
 
-        bool operator!=(const Vector3D &rhs) const;
+        bool operator!=(const Vector3D &other) const;
     };
 
-    Vector3D operator*(float factor, const Vector3D &other);
+
 }
 
 #endif //OOP_VECTOR3D_H

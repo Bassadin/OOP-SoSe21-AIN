@@ -19,9 +19,9 @@ namespace hfu {
         return z;
     }
 
-    std::ostream &operator<<(std::ostream &os, const Vector3D &d) {
-        os << "(x: " << d.getX() << " y: " << d.getY() << " z: " << d.getZ() << ")";
-        return os;
+    std::ostream &operator<<(std::ostream &outStream, const Vector3D &d) {
+        outStream << "(x: " << d.getX() << " y: " << d.getY() << " z: " << d.getZ() << ")";
+        return outStream;
     }
 
     Vector3D Vector3D::operator+(const Vector3D &other) {
@@ -40,18 +40,19 @@ namespace hfu {
         return (other.getX() * getX()) + (other.getY() * getY()) + (other.getZ() * getZ());
     }
 
-    Vector3D operator*(float factor, const Vector3D &other) {
-        return Vector3D(other.getX() * factor, other.getY() * factor, other.getZ() * factor);
-    }
-
     bool Vector3D::operator==(const Vector3D &other) const {
         return x == other.x &&
                y == other.y &&
                z == other.z;
     }
 
-    bool Vector3D::operator!=(const Vector3D &rhs) const {
-        return !(rhs == *this);
+    bool Vector3D::operator!=(const Vector3D &other) const {
+        return !(other == *this);
+    }
+
+    //Outside class Vector3D
+    Vector3D operator*(float factor, const Vector3D &other) {
+        return Vector3D(other.getX() * factor, other.getY() * factor, other.getZ() * factor);
     }
 }
 
