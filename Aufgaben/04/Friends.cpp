@@ -59,11 +59,14 @@ namespace hfu {
     void Friends::add(const char *nameStringToAdd) {
         std::string *newNames = new std::string[this->getSize() + 1];
 
-        copyArrayToArray(newNames, getNames(), 0, getSize() - 1);
+        if (getNames() == nullptr) {
+            newNames[0] = nameStringToAdd;
+        } else {
+            copyArrayToArray(newNames, getNames(), 0, getSize() - 1);
+            newNames[getSize()] = nameStringToAdd;
+        }
 
-        newNames[getSize()] = nameStringToAdd;
         delete[] names;
-
         names = newNames;
         size++;
     }
@@ -98,6 +101,7 @@ namespace hfu {
     void Friends::setNames(std::string *names) {
         Friends::names = names;
     }
+
     std::ostream &operator<<(std::ostream &os, const Friends &friends) {
         os << "(names: ";
 
@@ -112,4 +116,14 @@ namespace hfu {
         return os;
     }
 
+    Friends &Friends::operator=(const Friends &other) {
+        if (this == &other) {
+            return *this;
+        }
+        delete names;
+        names = new std::string[size];
+        setNames(copy_array(other.names, other.size));
+        size = other.size;
+        return *this;
+    }
 }

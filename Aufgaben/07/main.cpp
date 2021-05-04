@@ -88,7 +88,6 @@ namespace task_07 {
     }
 
     void test_01_e() {
-
         std::cout << "Task 01e Test Start" << std::endl;
 
         hfu::Vector3D vec1(2, 2, 4);
@@ -99,6 +98,7 @@ namespace task_07 {
 
         std::cout << "Task 01e Test End" << std::endl;
     }
+
     void test_02_a() {
         std::cout << "Task 02a Test Start" << std::endl;
 
@@ -113,6 +113,23 @@ namespace task_07 {
         std::cout << "Task 02a Test End" << std::endl;
     }
 
+    void test_02_b() {
+        std::cout << "Task 02b Test Start" << std::endl;
+
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu::Friends friends(names, 2);
+
+        hfu::Friends otherFriends;
+        otherFriends = friends;
+
+        otherFriends.add("Gustav");
+
+        assert(otherFriends.getSize() == 3);
+
+        std::cout << "Task 02b Test End" << std::endl;
+    }
+}
+
 int main() {
     std::cout << "Starting..." << std::endl;
 
@@ -121,6 +138,7 @@ int main() {
     task_07::test_01_d();
     task_07::test_01_e();
     task_07::test_02_a();
+    task_07::test_02_b();
 
     std::cout << "Terminating..." << std::endl;
     return 0;

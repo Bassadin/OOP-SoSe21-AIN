@@ -5,6 +5,8 @@
 #ifndef OOP_FRIENDS_H
 #define OOP_FRIENDS_H
 
+#include <ostream>
+
 namespace hfu {
     class Friends {
     private:
@@ -40,6 +42,9 @@ namespace hfu {
         void setNames(std::string *names);
 
         friend std::ostream &operator<<(std::ostream &os, const Friends &friends);
+
+        Friends& operator=(const Friends& other);
+
         static void copyArrayToArray(std::string *array_target, std::string *array_source, int copy_from, int copy_to);
     };
 }
