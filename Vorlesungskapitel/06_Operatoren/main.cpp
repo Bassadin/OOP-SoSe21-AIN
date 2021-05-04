@@ -9,13 +9,7 @@
 namespace operatoren_06 {
     class Point {
     private:
-        const int x, y;
-
-        static int *make_pair(int x, int y) {
-            int *result = new int[2]{x, y};
-            return result;
-        }
-
+        int x, y;
     public:
         Point(int x, int y) :
                 x(x), y(y) {
@@ -39,6 +33,17 @@ namespace operatoren_06 {
             return Point(x * factor, y * factor);
         }
 
+        bool operator==(const Point &other) const {
+            if (this == &other) {
+                return true;
+            }
+            return x == other.getX() && y == other.getY();
+        }
+
+        bool operator!=(const Point &other) const {
+            return !(*this == other);
+        }
+
         int getX() const {
             return x;
         }
@@ -51,6 +56,12 @@ namespace operatoren_06 {
     Point operator*(int factor, const Point &point) {
         return point * factor;
     }
+
+    //Warum hier friend verwenden statt Getter?
+    std::ostream& operator<<(std::ostream& out, const Point& point){
+        out << "(" << point.getX() << ", " << point.getY() << ")";
+        return out;
+    }
 }
 
 int main() {
@@ -58,10 +69,13 @@ int main() {
 
     operatoren_06::Point p1(2, 3);
     operatoren_06::Point p2(6, 10);
+    std::cout << p1 << std::endl;
 
-    auto p3 = 23 * p2;
+    p1=p2;
 
-    std::cout << p3.getX() << std::endl;
+    if (p1 == p2) {
+        std::cout << "Points are equal" << std::endl;
+    }
 
     std::cout << "terminating..." << std::endl;
     return 0;
