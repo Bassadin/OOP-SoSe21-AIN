@@ -120,11 +120,18 @@ namespace task_07 {
         hfu::Friends friends(names, 2);
 
         hfu::Friends otherFriends;
+        //Assignment operator
         otherFriends = friends;
 
         otherFriends.add("Gustav");
 
         assert(otherFriends.getSize() == 3);
+
+        //Also test adding to empty Friends object while we're at it
+        hfu::Friends noFriends;
+        noFriends.add("Gustav");
+        assert(noFriends.getSize() == 1);
+        assert(noFriends.name(0) == "Gustav");
 
         std::cout << "Task 02b Test End" << std::endl;
     }
