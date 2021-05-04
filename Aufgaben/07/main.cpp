@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <cassert>
+#include <sstream>
 #include "Vector3D.h"
 
 namespace task_07 {
@@ -57,7 +58,9 @@ namespace task_07 {
         assert(vecSub.getZ() == -3);
 
         //Stream Operator Test
-        std::cout << "--> Stream Operator Test: " << vecAdd << std::endl;
+        std::ostringstream testStream;
+        testStream << vecAdd;
+        assert(testStream.str() == "(x: 3 y: 6 z: 9)");
 
         std::cout << "Task 01c Test End" << std::endl;
     }
