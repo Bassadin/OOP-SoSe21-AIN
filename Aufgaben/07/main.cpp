@@ -135,6 +135,17 @@ namespace task_07 {
 
         std::cout << "Task 02b Test End" << std::endl;
     }
+
+    void test_02_c() {
+        std::cout << "Task 02c Test Start" << std::endl;
+
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu::Friends friends(names, 2);
+
+        assert(friends[1] == "Daisy");
+
+        std::cout << "Task 02c Test End" << std::endl;
+    }
 }
 
 int main() {
@@ -146,6 +157,7 @@ int main() {
     task_07::test_01_e();
     task_07::test_02_a();
     task_07::test_02_b();
+    task_07::test_02_c();
 
     std::cout << "Terminating..." << std::endl;
     return 0;

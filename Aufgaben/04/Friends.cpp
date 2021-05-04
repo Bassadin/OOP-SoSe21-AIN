@@ -126,4 +126,10 @@ namespace hfu {
         size = other.size;
         return *this;
     }
+
+    std::string Friends::operator[](const unsigned int &index) {
+        if (index > (unsigned) getSize() - 1)
+            return nullptr;
+        return name(index);
+    }
 }
