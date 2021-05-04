@@ -98,4 +98,18 @@ namespace hfu {
     void Friends::setNames(std::string *names) {
         Friends::names = names;
     }
+    std::ostream &operator<<(std::ostream &os, const Friends &friends) {
+        os << "(names: ";
+
+        for (int i = 0; i < friends.getSize(); ++i) {
+            os << friends.name(i);
+            if (i < friends.getSize() - 1) {
+                os << ", ";
+            }
+        }
+
+        os << "; size: " << friends.size << ")";
+        return os;
+    }
+
 }

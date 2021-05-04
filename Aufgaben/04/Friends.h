@@ -39,6 +39,7 @@ namespace hfu {
 
         void setNames(std::string *names);
 
+        friend std::ostream &operator<<(std::ostream &os, const Friends &friends);
         static void copyArrayToArray(std::string *array_target, std::string *array_source, int copy_from, int copy_to);
     };
 }

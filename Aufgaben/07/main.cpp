@@ -6,6 +6,7 @@
 #include <cassert>
 #include <sstream>
 #include "Vector3D.h"
+#include "../04/Friends.h"
 
 namespace task_07 {
     void test_01_b() {
@@ -98,7 +99,19 @@ namespace task_07 {
 
         std::cout << "Task 01e Test End" << std::endl;
     }
-}
+    void test_02_a() {
+        std::cout << "Task 02a Test Start" << std::endl;
+
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu::Friends friends(names, 2);
+
+        //Stream Operator Test
+        std::ostringstream testStream;
+        testStream << friends;
+        assert(testStream.str() == "(names: Donald, Daisy; size: 2)");
+
+        std::cout << "Task 02a Test End" << std::endl;
+    }
 
 int main() {
     std::cout << "Starting..." << std::endl;
@@ -107,6 +120,7 @@ int main() {
     task_07::test_01_c();
     task_07::test_01_d();
     task_07::test_01_e();
+    task_07::test_02_a();
 
     std::cout << "Terminating..." << std::endl;
     return 0;
