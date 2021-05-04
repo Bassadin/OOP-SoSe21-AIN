@@ -10,7 +10,6 @@
 
 namespace task_07 {
     void test_01_b() {
-        //Noch nicht fertig! #TODO
         std::cout << "Task 01b Test Start" << std::endl;
 
         hfu::Vector3D vec1(1, 2, 3);
@@ -24,12 +23,7 @@ namespace task_07 {
         assert(vec3.getY() == 2);
         assert(vec3.getZ() == 3);
 
-        //Zuweisungsoperator ??? Mach der Sinn, wenn Attribute eh const sind?
-        //vec2 = vec1;
-
-        //assert(vec2.getX() == 1);
-        //assert(vec2.getY() == 2);
-        //assert(vec2.getZ() == 3);
+        //Zuweisungsoperator macht keinen Sinn, wenn Attribute eh const sind
 
         /*
         Vergleichoperatoren erachte ich bein einem 3D-Vektor als nicht sinnvoll,
