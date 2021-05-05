@@ -28,11 +28,12 @@ namespace hfu {
         return Vector3D(getX() + other.getX(), getY() + other.getY(), getZ() + other.getZ());
     }
 
+    //Unäres Minus implementieren! #TODO
     Vector3D Vector3D::operator-(const Vector3D &other) {
         return Vector3D(getX() - other.getX(), getY() - other.getY(), getZ() - other.getZ());
     }
 
-    Vector3D Vector3D::operator*(const float &factor) {
+    Vector3D Vector3D::operator*(const float factor) const {
         return Vector3D(getX() * factor, getY() * factor, getZ() * factor);
     }
 
@@ -41,6 +42,7 @@ namespace hfu {
     }
 
     bool Vector3D::operator==(const Vector3D &other) const {
+        //Hier vllt nach jeder Expression seperat returnen?
         return x == other.x &&
                y == other.y &&
                z == other.z;
@@ -52,7 +54,7 @@ namespace hfu {
 
     //Outside class Vector3D
     Vector3D operator*(float factor, const Vector3D &other) {
-        return Vector3D(other.getX() * factor, other.getY() * factor, other.getZ() * factor);
+        return other * factor;
     }
 }
 

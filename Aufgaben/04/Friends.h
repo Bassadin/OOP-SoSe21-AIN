@@ -45,7 +45,9 @@ namespace hfu {
 
         Friends &operator=(const Friends &other);
 
-        std::string operator[](const unsigned int &index);
+        std::string &operator[](const unsigned int &index);
+
+        const std::string& operator[](const unsigned int &index) const;
 
         static void copyArrayToArray(std::string *array_target, std::string *array_source, int copy_from, int copy_to);
     };

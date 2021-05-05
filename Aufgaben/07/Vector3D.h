@@ -20,24 +20,22 @@ namespace hfu {
 
         float getZ() const;
 
-        friend std::ostream &operator<<(std::ostream &os, const Vector3D &d);
-
-        friend Vector3D operator*(float factor, const Vector3D &other);
-
         Vector3D operator+(const Vector3D& other);
 
         Vector3D operator-(const Vector3D &other);
 
-        Vector3D operator*(const float &factor);
+        Vector3D operator*(const float factor) const;
 
         float operator*(const Vector3D& other);
 
         bool operator==(const Vector3D &other) const;
 
         bool operator!=(const Vector3D &other) const;
+
+        friend std::ostream &operator<<(std::ostream &os, const Vector3D &d);
     };
 
-
+    Vector3D operator*(float factor, const Vector3D &other);
 }
 
 #endif //OOP_VECTOR3D_H

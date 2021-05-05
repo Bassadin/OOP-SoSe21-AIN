@@ -42,6 +42,7 @@ namespace hfu {
     }
 
     const std::string &Friends::name(unsigned int v) const {
+        //Nach Länge checken
         return names[v];
     }
 
@@ -52,7 +53,6 @@ namespace hfu {
     const int &Friends::getSize() const {
         return size;
     }
-
 
     void Friends::add(const char *nameStringToAdd) {
         std::string *newNames = new std::string[this->getSize() + 1];
@@ -118,14 +118,18 @@ namespace hfu {
         if (this == &other) {
             return *this;
         }
-        delete names;
+        delete[] names;
         names = new std::string[size];
         setNames(copy_array(other.names, other.size));
         size = other.size;
         return *this;
     }
 
-    std::string Friends::operator[](const unsigned int &index) {
+    std::string &Friends::operator[](const unsigned int &index) {
+        return names[index];
+    }
+
+    const std::string& Friends::operator[](const unsigned int &index) const {
         return name(index);
     }
 }
