@@ -11,6 +11,7 @@ add_executable(03-konstruktoren_und_destruktoren Vorlesungskapitel/03_Konstrukto
 add_executable(04-kopierkonstruktoren Vorlesungskapitel/04_Kopierkonstruktoren/main.cpp)
 add_executable(05-Destruktoren Vorlesungskapitel/05_Destruktoren/main.cpp)
 add_executable(06-Operatoren Vorlesungskapitel/06_Operatoren/main.cpp)
+add_executable(07-Templates Vorlesungskapitel/07_Templates/main.cpp)
 add_executable(aufgabe-01 Aufgaben/01/test.cpp)
 add_executable(aufgabe-02 Aufgaben/02/main.cpp)
 add_executable(aufgabe-03 Aufgaben/03/main.cpp Aufgaben/03/Date.cpp Aufgaben/03/Person.cpp)
