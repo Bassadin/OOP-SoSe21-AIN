@@ -40,14 +40,13 @@ namespace templates_07 {
         return c2;
     }
 
-    template<typename T>
+    template<typename T, int capacity>
     class Stack {
     private:
-        const int capacity;
         int size;
-        std::unique_ptr<T[]> data;
+        T data[capacity];
     public:
-        Stack(int capacity) : capacity(capacity), size(0), data(std::make_unique<T[]>(capacity)) {}
+        Stack() : size(0) {}
 
         bool pop(T &v) {
             if (size == 0) return false;
