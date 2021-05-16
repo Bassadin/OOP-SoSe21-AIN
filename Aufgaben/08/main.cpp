@@ -5,9 +5,11 @@
 #include <iostream>
 #include <cassert>
 #include "Date.h"
+#include "ArrayList.h"
 
 namespace aufgabe_08 {
-    template <typename T> bool find(T inputArray[], int length, T key) {
+    template<typename T>
+    bool find(T inputArray[], int length, T key) {
         for (int i = 0; i < length; ++i) {
             if (inputArray[i] == key)
                 return true;
@@ -29,17 +31,25 @@ namespace aufgabe_08 {
     void test_task_01c() {
         std::cout << "start test task 1c..." << std::endl;
 
-        hfu::Date date1(2021,1,1);
-        hfu::Date date2(2020,12,31);
-        hfu::Date date3(2019,12,24);
-        hfu::Date date4(1989,11,9);
-        hfu::Date dates[]={date1,date2,date3};
-        for(int i=0;i<3;i++) {
-            assert( find(dates, 3,dates[i]));
+        hfu::Date date1(2021, 1, 1);
+        hfu::Date date2(2020, 12, 31);
+        hfu::Date date3(2019, 12, 24);
+        hfu::Date date4(1989, 11, 9);
+        hfu::Date dates[] = {date1, date2, date3};
+        for (int i = 0; i < 3; i++) {
+            assert(find(dates, 3, dates[i]));
         }
-        assert( !find(dates, 3,date4));
+        assert(!find(dates, 3, date4));
 
         std::cout << "end test task 1c..." << std::endl;
+    }
+
+    void test_normal_constructor_Friends() {
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu_08::Friends friends(names, 2);
+        assert(friends.getSize() == 2);
+        assert(friends.entryAtIndex(0) == "Donald");
+        assert(friends.entryAtIndex(1) == "Daisy");
     }
 }
 
@@ -48,6 +58,7 @@ int main() {
 
     aufgabe_08::test_task_01aandb();
     aufgabe_08::test_task_01c();
+    aufgabe_08::test_normal_constructor_Friends();
 
     std::cout << "terminating..." << std::endl;
     return 0;
