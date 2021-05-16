@@ -8,10 +8,11 @@
 #include <ostream>
 
 namespace hfu_08 {
-    template <typename T> class ArrayList {
+    template<typename T>
+    class ArrayList {
     private:
         T *entries;
-        int size{};
+        int size;
 
         static int validate_array_size(int newSize, T newEntries[]);
 
@@ -27,9 +28,9 @@ namespace hfu_08 {
 
         ArrayList(const ArrayList &other);
 
-        const T & entryAtIndex(unsigned int v) const;
+        const T &entryAtIndex(unsigned int v) const;
 
-        T * getEntries() const;
+        T *getEntries() const;
 
         const int &getSize() const;
 
@@ -41,20 +42,36 @@ namespace hfu_08 {
 
         void setEntries(T *newEntries);
 
-        template<class TT>
-        friend std::ostream &operator<<(std::ostream &os, const ArrayList<TT> &arrayList);
-
         ArrayList &operator=(const ArrayList &other);
 
         T &operator[](const unsigned int &index);
 
-        const T& operator[](const unsigned int &index) const;
+        const T &operator[](const unsigned int &index) const;
 
         static void copyArrayToArray(T *array_target, T *array_source, int copy_from, int copy_to);
     };
 
+
     template class ArrayList<std::string>;
+
     typedef ArrayList<std::string> Friends;
+
+    template <typename T>
+    std::ostream &operator<<(std::ostream &os, const ArrayList<T> &arrayList) {
+
+        os << "(entries: ";
+
+        for (int i = 0; i < arrayList.getSize(); ++i) {
+            os << arrayList.entryAtIndex(i);
+            if (i < arrayList.getSize() - 1) {
+                os << ", ";
+            }
+        }
+
+        os << "; size: " << arrayList.getSize() << ")";
+
+        return os;
+    }
 }
 
-#endif //OOP_FRIENDS_H
+#endif //OOP_ARRAYLIST_H

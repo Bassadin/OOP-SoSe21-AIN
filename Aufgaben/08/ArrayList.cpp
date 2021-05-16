@@ -1,7 +1,6 @@
 //
 // Created by basti on 13.04.2021.
 //
-#include <cassert>
 #include <iostream>
 #include "ArrayList.h"
 
@@ -106,27 +105,12 @@ namespace hfu_08 {
 
     template<typename T>
     bool ArrayList<T>::operator!=(const ArrayList &other) const {
-        return !(*this == other);
+        return *this != other;
     }
 
     template<typename T>
     void ArrayList<T>::setEntries(T *newEntries) {
         this->entries = newEntries;
-    }
-
-    template<typename T>
-    std::ostream &operator<<(std::ostream &os, const ArrayList<T> &arrayList) {
-        os << "(entries: ";
-
-        for (int i = 0; i < arrayList.getSize(); ++i) {
-            os << arrayList.entryAtIndex(i);
-            if (i < arrayList.getSize() - 1) {
-                os << ", ";
-            }
-        }
-
-        os << "; size: " << arrayList.size << ")";
-        return os;
     }
 
     template<typename T>
@@ -150,5 +134,4 @@ namespace hfu_08 {
     const T &ArrayList<T>::operator[](const unsigned int &index) const {
         return entryAtIndex(index);
     }
-
 }

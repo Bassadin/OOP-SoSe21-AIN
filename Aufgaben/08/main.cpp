@@ -2,10 +2,11 @@
 // Created by basti on 11.05.2021.
 //
 
-#include <iostream>
 #include <cassert>
-#include "Date.h"
+
 #include "ArrayList.h"
+#include <sstream>
+#include "Date.h"
 
 namespace aufgabe_08 {
     template<typename T>
@@ -51,6 +52,54 @@ namespace aufgabe_08 {
         assert(friends.entryAtIndex(0) == "Donald");
         assert(friends.entryAtIndex(1) == "Daisy");
     }
+
+    void test_02_b_01() {
+        std::cout << "Task 02b 01 Test Start" << std::endl;
+
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu_08::Friends friends(names, 2);
+
+        //Stream Operator Test
+        std::ostringstream testStream;
+        testStream << friends;
+        assert(testStream.str() == "(entries: Donald, Daisy; size: 2)");
+
+        std::cout << "Task 02b 01 Test End" << std::endl;
+    }
+
+    void test_02_b_02() {
+        std::cout << "Task 02b 02 Test Start" << std::endl;
+
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu_08::Friends friends(names, 2);
+
+        hfu_08::Friends otherFriends;
+        //Assignment operator
+        otherFriends = friends;
+
+        otherFriends.add("Gustav");
+
+        assert(otherFriends.getSize() == 3);
+
+        //Also test adding to empty Friends object while we're at it
+        hfu_08::Friends noFriends;
+        noFriends.add("Gustav");
+        assert(noFriends.getSize() == 1);
+        assert(noFriends.entryAtIndex(0) == "Gustav");
+
+        std::cout << "Task 02b 02 Test End" << std::endl;
+    }
+
+    void test_02_b_03() {
+        std::cout << "Task 02b 03 Test Start" << std::endl;
+
+        std::string names[2] = {"Donald", "Daisy"};
+        hfu_08::Friends friends(names, 2);
+
+        assert(friends[1] == "Daisy");
+
+        std::cout << "Task 02b 03 Test End" << std::endl;
+    }
 }
 
 int main() {
@@ -59,6 +108,9 @@ int main() {
     aufgabe_08::test_task_01aandb();
     aufgabe_08::test_task_01c();
     aufgabe_08::test_normal_constructor_Friends();
+    aufgabe_08::test_02_b_01();
+    aufgabe_08::test_02_b_02();
+    aufgabe_08::test_02_b_03();
 
     std::cout << "terminating..." << std::endl;
     return 0;
