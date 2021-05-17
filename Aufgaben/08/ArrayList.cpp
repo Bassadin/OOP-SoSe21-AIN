@@ -21,7 +21,7 @@ namespace hfu_08 {
             return array_to_copy;
         }
 
-        auto *copiedArray = new std::string[copy_length];
+        auto *copiedArray = new T[copy_length];
 
         copyArrayToArray(copiedArray, array_to_copy, 0, copy_length - 1);
 
@@ -42,7 +42,6 @@ namespace hfu_08 {
     template<typename T>
     ArrayList<T>::~ArrayList() {
         delete[] entries;
-        std::cout << "Friends dtr" << std::endl;
     }
 
     template<typename T>
@@ -63,7 +62,7 @@ namespace hfu_08 {
 
     template<typename T>
     void ArrayList<T>::add(const char *entryToAdd) {
-        T *newEntries = new T[this->getSize() + 1];
+        T *newEntries = new T[getSize() + 1];
 
         if (getEntries() == nullptr) {
             newEntries[0] = entryToAdd;
@@ -119,9 +118,9 @@ namespace hfu_08 {
             return *this;
         }
         delete[] entries;
-        entries = new std::string[size];
-        setEntries(copy_array(other.entries, other.size));
-        size = other.size;
+        entries = new T[size];
+        setEntries(copy_array(other.getEntries(), other.getSize()));
+        size = other.getSize();
         return *this;
     }
 
@@ -134,4 +133,5 @@ namespace hfu_08 {
     const T &ArrayList<T>::operator[](const unsigned int &index) const {
         return entryAtIndex(index);
     }
+
 }
