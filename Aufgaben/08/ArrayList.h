@@ -34,7 +34,7 @@ namespace hfu_08 {
 
         const int &getSize() const;
 
-        void add(const char *entryToAdd);
+        void add(const char *entryToAdd); //TODO Muss T sein
 
         bool operator==(const ArrayList &other) const;
 

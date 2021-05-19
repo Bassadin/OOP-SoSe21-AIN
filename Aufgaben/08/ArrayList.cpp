@@ -46,7 +46,7 @@ namespace hfu_08 {
 
     template<typename T>
     const T &ArrayList<T>::entryAtIndex(unsigned int v) const {
-        //Nach Länge checken
+        //TODO Nach Länge checken
         return entries[v];
     }
 
