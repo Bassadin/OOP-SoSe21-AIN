@@ -10,6 +10,7 @@
 namespace task_09 {
     std::string extract_airline(const std::string& text) {
 
+        //https://www.fluentcpp.com/2020/02/28/c-regex-101-simple-code-for-simple-cases-with-regexes/
         const std::regex regex(R"(\"([A-Z]{2})\")");
         std::smatch matches;
 
@@ -19,8 +20,8 @@ namespace task_09 {
         return matches[1]; //Return second element in matches (capture group)
     }
 
-    std::map<std::string, int> create_frequencies(const std::string& filename) {
-        auto resultMap = std::map<std::string, int>();
+    std::unique_ptr<std::map<std::string, int>> create_frequencies(const std::string& filename) {
+        auto resultMap = std::unique_ptr<std::map<std::string, int>>();
 
         std::ifstream inputFileStream(filename);
         assert(inputFileStream.is_open());
