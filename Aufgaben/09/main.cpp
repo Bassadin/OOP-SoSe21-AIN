@@ -11,7 +11,7 @@ namespace task_09 {
     std::string extract_airline(const std::string &text) {
 
         //https://www.fluentcpp.com/2020/02/28/c-regex-101-simple-code-for-simple-cases-with-regexes/
-        const std::regex regex(R"(\"([A-Z]{2})\")");
+        const std::regex regex(R"(\"([A-Z0-9]{2})\")");
         std::smatch matches;
 
         if (!std::regex_search(text, matches, regex)) //Return false if not found
@@ -26,26 +26,30 @@ namespace task_09 {
         std::ifstream inputFileStream(filename, std::ifstream::in);
         assert(inputFileStream.is_open());
         std::string line;
-        inputFileStream >> line; //Skip over first line
+        //std::getline(inputFileStream, line); //Skip over first line
 
-        int counter = 0;
+        int currentLineCounter = 1;
 
-        while (inputFileStream >> line) {
+        //while (inputFileStream >> line) {
+        while (std::getline(inputFileStream, line)) {
             auto extractedAirlineString = extract_airline(line);
 
-            //https://www.techiedelight.com/increment-map-value-associated-with-key-cpp/#:~:text=Given%20an%20ordered%20or%20an,the%20key%20is%20not%20found.
-
-            auto foundMapEntry = resultMap->find(extractedAirlineString);
-
-            if (foundMapEntry != resultMap->end()) {
-                foundMapEntry->second++;
-            } else {
-                resultMap->insert(std::make_pair(extractedAirlineString, 1));
+            if (extractedAirlineString != "") {
+                //https://www.techiedelight.com/increment-map-value-associated-with-key-cpp/#:~:text=Given%20an%20ordered%20or%20an,the%20key%20is%20not%20found.
+                auto foundMapEntry = resultMap->find(extractedAirlineString);
+                if (foundMapEntry != resultMap->end()) {
+                    foundMapEntry->second++;
+                } else {
+                    resultMap->insert(std::make_pair(extractedAirlineString, 1));
+                }
             }
 
-            std::cout << "Iteration: " << counter << std::endl;
-            counter++;
+            if (currentLineCounter % 10000 == 0) {
+                std::cout << "Current line: " << currentLineCounter << std::endl;
+            }
+            currentLineCounter++;
         }
+
         inputFileStream.close();
 
         return resultMap;
@@ -63,12 +67,33 @@ namespace task_09 {
         std::cout << " --- Task 1 Test passed --- " << std::endl;
     }
 
+    template <typename T, typename U>
+    std::string map_to_string(std::map<T, U>  &m) {
+        std::string output = "";
+        std::string convrt = "";
+        std::string result = "";
+
+        for (auto it = m.cbegin(); it != m.cend(); it++) {
+
+            convrt = std::to_string(it->second);
+            output += (it->first) + ":" + (convrt) + ", ";
+        }
+
+        result = output.substr(0, output.size() - 2 );
+
+        return result;
+    }
+
     void test_task_02() {
 
         std::string filename = "Aufgaben/09/flights.csv";
         auto airlines = create_frequencies(filename);
+
+        std::cout << map_to_string(*airlines) << std::endl;
+
         assert(airlines->at("AA") == 32729);
         int size = airlines->size();
+        std::cout << "map size: " << size << std::endl;
         assert(size == 18);
 
         std::cout << " --- Task 2 Test passed --- " << std::endl;
