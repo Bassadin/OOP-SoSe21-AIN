@@ -8,7 +8,7 @@
 #include <fstream>
 
 namespace task_09 {
-    std::string extract_airline(const std::string& text) {
+    std::string extract_airline(const std::string &text) {
 
         //https://www.fluentcpp.com/2020/02/28/c-regex-101-simple-code-for-simple-cases-with-regexes/
         const std::regex regex(R"(\"([A-Z]{2})\")");
@@ -20,15 +20,31 @@ namespace task_09 {
         return matches[1]; //Return second element in matches (capture group)
     }
 
-    std::unique_ptr<std::map<std::string, int>> create_frequencies(const std::string& filename) {
-        auto resultMap = std::unique_ptr<std::map<std::string, int>>();
+    std::unique_ptr<std::map<std::string, int>> create_frequencies(const std::string &filename) {
+        auto resultMap = std::make_unique<std::map<std::string, int>>();
 
-        std::ifstream inputFileStream(filename);
+        std::ifstream inputFileStream(filename, std::ifstream::in);
         assert(inputFileStream.is_open());
         std::string line;
-        while (inputFileStream >> line){
-            std::cout<<line<<std::endl;
-            //TODO
+        inputFileStream >> line; //Skip over first line
+
+        int counter = 0;
+
+        while (inputFileStream >> line) {
+            auto extractedAirlineString = extract_airline(line);
+
+            //https://www.techiedelight.com/increment-map-value-associated-with-key-cpp/#:~:text=Given%20an%20ordered%20or%20an,the%20key%20is%20not%20found.
+
+            auto foundMapEntry = resultMap->find(extractedAirlineString);
+
+            if (foundMapEntry != resultMap->end()) {
+                foundMapEntry->second++;
+            } else {
+                resultMap->insert(std::make_pair(extractedAirlineString, 1));
+            }
+
+            std::cout << "Iteration: " << counter << std::endl;
+            counter++;
         }
         inputFileStream.close();
 
@@ -49,11 +65,11 @@ namespace task_09 {
 
     void test_task_02() {
 
-        std::string filename="flights.csv";
-        auto airlines=create_frequencies(filename);
-        assert(airlines["AA"]=32729);
-        int size=airlines.size();
-        assert(size==18);
+        std::string filename = "Aufgaben/09/flights.csv";
+        auto airlines = create_frequencies(filename);
+        assert(airlines->at("AA") == 32729);
+        int size = airlines->size();
+        assert(size == 18);
 
         std::cout << " --- Task 2 Test passed --- " << std::endl;
     }
@@ -63,6 +79,7 @@ int main() {
     std::cout << "starting..." << std::endl;
 
     task_09::test_task_01();
+    task_09::test_task_02();
 
     std::cout << "terminating..." << std::endl;
     return 0;
