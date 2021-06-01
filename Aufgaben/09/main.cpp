@@ -44,13 +44,7 @@ namespace task_09 {
             auto extractedAirlineString = extract_airline(line);
 
             if (extractedAirlineString != "") {
-                //https://www.techiedelight.com/increment-map-value-associated-with-key-cpp/#:~:text=Given%20an%20ordered%20or%20an,the%20key%20is%20not%20found.
-                auto foundMapEntry = resultMap->find(extractedAirlineString);
-                if (foundMapEntry != resultMap->end()) {
-                    foundMapEntry->second++;
-                } else {
-                    resultMap->insert(std::make_pair(extractedAirlineString, 1));
-                }
+                (*resultMap)[extractedAirlineString]++;
             }
 
             if (currentLineCounter % 10000 == 0) {
@@ -59,6 +53,7 @@ namespace task_09 {
             currentLineCounter++;
         }
 
+        //Braucht man nicht -> Destruktoren!
         inputFileStream.close();
 
         return resultMap;
@@ -77,16 +72,15 @@ namespace task_09 {
         std::cout << " --- Task 1 Test passed --- " << std::endl;
     }
 
+    //http://www.cplusplus.com/forum/general/211386/
     template<typename T, typename U>
     std::string map_to_string(std::map<T, U> &m) {
         std::string output = "";
         std::string convrt = "";
         std::string result = "";
 
-        for (auto it = m.cbegin(); it != m.cend(); it++) {
-
-            convrt = std::to_string(it->second);
-            output += (it->first) + ":" + (convrt) + ", ";
+        for (auto& pair : m) {
+            output += (pair.first) + ":" + std::to_string(pair.second) + ", ";
         }
 
         result = output.substr(0, output.size() - 2);
