@@ -24,3 +24,4 @@ add_executable(aufgabe-07 Aufgaben/07/main.cpp Aufgaben/04/Friends.cpp Aufgaben/
 add_executable(aufgabe-08 Aufgaben/08/main.cpp Aufgaben/08/Date.cpp Aufgaben/08/ArrayList.cpp)
 add_executable(aufgabe-09 Aufgaben/09/main.cpp)
 add_executable(aufgabe-10 Aufgaben/10/main.cpp)
+add_executable(aufgabe-11 Aufgaben/11/main.cpp)
